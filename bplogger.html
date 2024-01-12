@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Details</title>
+    <style>
+        body {
+            text-align: left; /* 设置整体内容左对齐 */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #00BFFF;
+            color: #ffffff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h2 {
+            color: #00BFFF;
+        }
+		#appScreenshots {
+			white-space: nowrap; 
+			overflow-x: auto;
+		}
+        div img {
+            max-width: 100%;
+			height: 200px;
+			margin:2px;
+            border-radius: 8px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #3408da;
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .download-button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #4285f4;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-button:hover {
+            background-color: #0056b3;
+        }
+		
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #00BFFF;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 id="appName">Loading...</h1>
+    </header>
+
+    <section>
+        <img style='width:84px;height:84px' id="appIcon" src="#" alt="App Icon">
+
+        <h2>Description</h2>
+        <p id="appDescription">Loading...</p>
+
+        <h2>Screenshots</h2>
+        <div id="appScreenshots">
+            <!-- Screenshots will be dynamically added here -->
+        </div>
+
+        <h2>Contact Us</h2>
+        <p id="contactInfo">Loading...</p>
+
+        <a href="" id="downloadButton" class="download-button">Download Now</a>
+    </section>
+
+    <footer>
+        &copy; <span id='yearInfo'></span> <span id='teamInfo'></span>
+    </footer>
+
+    <script>
+        // JSON 数据直接在 <script> 标签内部定义
+        const config = {
+            "appName": "Blood Pressure Logger",
+            "appDescription": `Experience effortless blood pressure management with our intelligent recording tool.
+
+Struggling to regulate your blood pressure? We get it.
+
+Our app simplifies continuous blood pressure recording, offers insightful analytics, and equips you with essential knowledge for optimal health.
+
+Key Features:
+
+Streamlined blood pressure logging
+Instant BP range calculations
+Comprehensive long-term tracking
+In-depth BP insights
+Tired of manual BP logs?
+Unsure about your BP status?
+Seeking continuous BP insights?
+Desire accurate BP data?
+
+Embrace our app for seamless recording, practical advice, and effective blood pressure management.
+`,
+            "appIcon": "https://play-lh.googleusercontent.com/gKiJ3iMT-UpxsnhErDKPwz4WjM-kBgH-IaIHu_MxA4G6Drb9COy0E7YGB0O5Z8a6tGhq=w240-h480",
+            "screenshots": [
+                "https://play-lh.googleusercontent.com/H_zQu5xL-jzlkX_t00_IcGn0hk1buJ3FQQf5X5OBOzymv3gXoGcb7_l-lz2HR1XTpz2N=w526-h296-rw",
+                "https://play-lh.googleusercontent.com/xDgIQo73-NpN62y8gM35_I-jMMLl2F0xgqugSwtK0oaibzL5WLwAV3O9-bmkaj7yLw=w526-h296-rw",
+				"https://play-lh.googleusercontent.com/sOFbiM9n6eWep4nc-usPWM-JfW7c1pxxQldCOefoAX22dncc7G_HfWGTyx8U9CKtijhz=w526-h296-rw"
+            ],
+            "contactInfo": "brawn.jams9527@gmail.com",
+            "teamInfo": "Keep Value Studio",
+            "downloadUrl": "https://play.google.com/store/apps/details?id=com.logger.blood.pressure.tool"
+        };
+
+        // JavaScript to dynamically update content
+        document.title = config.appName;
+        document.getElementById('appName').innerHTML = config.appName;
+        document.getElementById('appDescription').innerText = config.appDescription;
+        document.getElementById('appIcon').src = config.appIcon;
+
+        const screenshotsContainer = document.getElementById('appScreenshots');
+        config.screenshots.forEach(screenshot => {
+            const img = document.createElement('img');
+            img.src = screenshot;
+            img.alt = 'Screenshot';
+            screenshotsContainer.appendChild(img);
+        });
+
+        document.getElementById('contactInfo').innerHTML = config.contactInfo;
+		
+        document.getElementById('downloadButton').href = config.downloadUrl;
+		
+		document.getElementById('yearInfo').innerHTML = new Date().getFullYear();
+
+        document.getElementById('teamInfo').innerText = config.teamInfo;
+    </script>
+</body>
+
+</html>
